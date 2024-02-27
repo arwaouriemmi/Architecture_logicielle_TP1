@@ -1,0 +1,31 @@
+@startuml
+
+abstract class Resource {
+    + markSlotBusy(resourceId: int): void
+    + markSlotFree(resourceId: int): void
+    + findFreeSlot(): int
+}
+
+class ResourceAllocator {
+    + allocate(resource: Resource): int
+    + free(resource: Resource, resourceId: int): void
+}
+
+class SpaceResource {
+    + markSlotBusy(resourceId: int): void
+    + markSlotFree(resourceId: int): void
+    + findFreeSlot(): int
+}
+
+class TimeResource {
+    + markSlotBusy(resourceId: int): void
+    + markSlotFree(resourceId: int): void
+    + findFreeSlot(): int
+}
+
+Resource <|-- SpaceResource
+Resource <|-- TimeResource
+
+ResourceAllocator  ..>  Resource 
+
+@enduml

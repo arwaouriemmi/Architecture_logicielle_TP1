@@ -1,0 +1,37 @@
+@startuml
+
+class Car {
+    - _id: String
+    - _model: String
+    - _brand: String
+
+    + getId(): String
+    + getModel(): String
+    + getBrand(): String
+}
+
+class CarComparer {
+    + getBestCarByModel(carsDb: List<Car>): Car
+}
+
+class CarFormatter {
+    + getName(car: Car): String
+    + getCarsNames(carsDb: List<Car>): String
+}
+
+class CarManager {
+    + getCarsNames(): String
+    + getBestCar(): Car
+}
+class CarRepository {
+    - _carsDb:List<Car>
+    + getFromDb(carId: String): Car
+    + getAllFromDb():List<Car>
+}
+
+
+CarManager "1" --  "*" Car:manage
+CarManager ..>  CarComparer 
+CarManager  ..>  CarFormatter 
+CarManager ..>CarRepository
+@enduml

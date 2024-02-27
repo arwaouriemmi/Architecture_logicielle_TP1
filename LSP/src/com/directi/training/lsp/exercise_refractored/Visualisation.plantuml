@@ -1,0 +1,27 @@
+@startuml
+
+class Duck {
+    + _on: boolean
+    + quack(): void
+    + swim(): void
+}
+
+class ElectronicDuck {
+    + turnOn(): void
+    + turnOff(): void
+}
+class NormalDuck {
+}
+
+class Pool {
+    + run(): void
+    - quack(Duck... ducks): void
+    - swim(Duck... ducks): void
+}
+
+Duck <|-- ElectronicDuck
+Duck <|-- NormalDuck
+Pool ..> Duck
+
+
+@enduml
