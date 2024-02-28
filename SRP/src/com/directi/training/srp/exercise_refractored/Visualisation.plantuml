@@ -24,13 +24,12 @@ class CarManager {
     + getBestCar(): Car
 }
 class CarRepository {
-    - _carsDb:List<Car>
     + getFromDb(carId: String): Car
     + getAllFromDb():List<Car>
 }
 
 
-CarManager "1" --  "*" Car:manage
+CarRepository "1" --  "*" Car:manage
 CarManager ..>  CarComparer 
 CarManager  ..>  CarFormatter 
 CarManager ..>CarRepository
